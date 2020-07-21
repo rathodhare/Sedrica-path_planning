@@ -1,0 +1,13 @@
+<launch>
+<node name="SpartonCompassIMU.py" pkg="sparton_main" type="SpartonCompassIMU.py" />
+<node name="nmea_serial_driver" pkg="nmea_navsat_driver" type="nmea_serial_driver" />
+<node name="LMS1xx_node" pkg="lms1xx" type="LMS1xx_node" />
+<node name="goal_set" pkg="goal_set" type="goal_set" />
+<node pkg="local_gridmap" type="local_gridmap_node" name="local_gridmap_node" output="screen"></node> 
+<node name="tf_broadcaster" pkg="hybrid_astar" type="tf_broadcaster" />
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(env HOME)/.rviz/path_planner.rviz" />
+<node name="map_server" pkg="map_server" type="map_server" args="$(find hybrid_astar)/maps/map.yaml" /> 
+<node name="hybrid_astar" pkg="hybrid_astar" type="hybrid_astar" />
+<node name="vel_arr" pkg="goal_set" type="vel_arr" />
+<node name="talker_e2o_loc_vel" pkg="goal_set" type="talker_e2o_loc_vel" />
+</launch>

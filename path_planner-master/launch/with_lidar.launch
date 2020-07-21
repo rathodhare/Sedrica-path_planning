@@ -1,0 +1,8 @@
+<launch>
+ <!-- <node name="hybrid_astar" pkg="hybrid_astar" type="hybrid_astar" /> -->
+  <node pkg="local_gridmap" type="local_gridmap_node" name="local_gridmap_node" output="screen"></node> 
+ <!--<node pkg="grid" type="pose_publish" name="pose_publish" output="screen"></node>-->
+ <node name="tf_broadcaster" pkg="hybrid_astar" type="tf_broadcaster" />
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(env HOME)/.rviz/path_planner.rviz" />
+ <node name="map_server" pkg="map_server" type="map_server" args="$(find hybrid_astar)/maps/map.yaml" /> 
+</launch>
